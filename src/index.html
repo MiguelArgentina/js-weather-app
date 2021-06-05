@@ -8,5 +8,19 @@
 </head>
 <body>
     Hello world!
+
+    <input type='text' class="d-none" id="keyword">
+    <div class="container-fluid">
+<form class="d-flex justify-content-between">
+  <div class="mb-3 w-75">
+    <label for="citySearchBox" class="form-label">City name</label>
+    <input type="text" class="form-control" id="citySearchBox" aria-describedby="searchHelp">
+    <div id="searchHelp" class="form-text">You must at least use 3 characters</div>
+  </div>
+  <button type="submit" id="searchCity" class="btn btn-primary w-25">Submit</button>
+</form>
+</div>
+    <ul id="list">
+</ul>
 </body>
 </html>
