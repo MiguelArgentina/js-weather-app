@@ -5,13 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 <script defer src="main.js"></script></head>
 <body>
     Hello world!
 
-    <input type='text' class="d-none" id="keyword">
     <div class="container-fluid">
-<form class="d-flex justify-content-between">
+<form class="d-inline-flex justify-content-between">
   <div class="mb-3 w-75">
     <label for="citySearchBox" class="form-label">City name</label>
     <input type="text" class="form-control" id="citySearchBox" aria-describedby="searchHelp">
@@ -22,5 +29,14 @@
 </div>
     <ul id="list">
 </ul>
+
+<div class="container-fluid border-secondary">
+  <div id="description"></div>
+  <div id="temp"></div>
+  <div id="location"></div>
+</div>
+<div id="weathermap">
+  <div id="mapid"></div>
+</div>
 </body>
 </html>
