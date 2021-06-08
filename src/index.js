@@ -1,7 +1,7 @@
 import 'bootstrap';
 import './style.scss';
 import getOpenweatherApiKey from './openweatherApiKey';
-import getMapboxApiKeyKey from './mapboxApiKeyKey';
+import getMapboxApiKeyKey from './mapboxApiKey';
 
 const openweatherApiKey = getOpenweatherApiKey;
 

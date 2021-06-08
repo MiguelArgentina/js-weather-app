@@ -1,6 +1,16 @@
 @import 'bootstrap/scss/bootstrap';
 
-#mapid {
-  height: 40vh;
-  width: 80vw;
+body {
+  background-image: url("./assets/images/bg-main.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+
+  #searchCity {
+    height: 80%;  
+  }
+
+  #mapid {
+   height: 40vh;
+   width: 80vw;
+  }
 }

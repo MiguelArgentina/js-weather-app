@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Tucu Weather app</title>
 
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
-   <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 </head>
+
 <body>
-    Hello world!
 
-    <div class="container-fluid">
-<form class="d-inline-flex justify-content-between">
-  <div class="mb-3 w-75">
-    <label for="citySearchBox" class="form-label">City name</label>
-    <input type="text" class="form-control" id="citySearchBox" aria-describedby="searchHelp">
-    <div id="searchHelp" class="form-text">You must at least use 3 characters</div>
+  <div class="container-fluid">
+    <div class="titles-wrapper text-center mt-5 mb-3">
+      <h1 class="text-light"><strong>Tucu Weather app</strong></h1>
+      <h4 class="text-light">Get weather forecasts for over than 1,5M cities all aroud the world</h2>
+    </div>
+    <form class="d-block">
+      <div class="mb-3 d-flex justify-content-around align-items-center">
+        <input type="text" class="form-control w-50" id="citySearchBox" placeholder='City name' aria-describedby="searchHelp">
+        <button type="submit" id="searchCity" class="btn btn-primary border-light w-25 ms-3">Submit</button>
+      </div>
+      <div class="info-wrapper justify-content-start">
+        <div id="searchHelp" class="form-text text-info">You must at least use 3 characters</div>
+      </div>
+    </form>
   </div>
-  <button type="submit" id="searchCity" class="btn btn-primary w-25">Submit</button>
-</form>
-</div>
-    <ul id="list">
-</ul>
+  <ul id="list">
+  </ul>
 
-<div class="container-fluid border-secondary">
-  <div id="description"></div>
-  <div id="temp"></div>
-  <div id="location"></div>
-</div>
-<div id="weathermap">
-  <div id="mapid"></div>
-</div>
+  <div class="container-fluid border-secondary">
+    <div id="description"></div>
+    <div id="temp"></div>
+    <div id="location"></div>
+  </div>
+  <div id="weathermap">
+    <div id="mapid"></div>
+  </div>
 </body>
+
 </html>
