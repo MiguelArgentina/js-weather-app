@@ -8762,6 +8762,17 @@ citySearchBoxElement.addEventListener('keyup', (e) => {
   }
 });
 
+function showAlert(alertObj) {
+  const alert = `<div class="alert alert-${alertObj.class} alert-dismissible fade show d-flex justify-content-between" role="alert">`
+    + `   <strong>${alertObj.message}</strong>`
+    + '       <button class="close bg-transparent border-danger " type="button" id="closeAlert" data-dismiss="alert" aria-label="Close">'
+    + '           <span class="bg-none" aria-hidden="true">×</span>'
+    + '       </button>'
+    + '   </div>';
+
+  document.getElementById('alert').innerHTML = alert;
+}
+
 searchCity.addEventListener('click', (e) => {
   e.preventDefault();
   const citySearchBox = document.getElementById('citySearchBox').value;
@@ -8770,7 +8781,7 @@ searchCity.addEventListener('click', (e) => {
       .then((response) => fetchHandler(response))
       .then((res) => {
         if (res.cod) {
-          console.log('There was a problem: ', res.message)
+          showAlert({ class: 'danger', message: `Problem encountered: ${res.message}` });
         } else {
           currentForecast = res.json;
           console.log(currentForecast);

@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Tucu Weather app</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -21,15 +23,18 @@
   <div class="container-fluid">
     <div class="titles-wrapper text-center mt-5 mb-5">
       <h1 class="text-light"><strong>Tucu Weather app</strong></h1>
-      <h4 class="text-light">Get weather forecasts for over than 1,5M cities all aroud the world</h2>
+      <h4 class="text-light">Get weather forecasts for over than 250.000 cities all aroud the world</h2>
     </div>
+
+    <div id="alert" class="my-2"></div>
+
     <form class="d-block">
       <div class="mb-3 mt-5 d-flex justify-content-around align-items-center">
         <input type="text" class="form-control w-50" id="citySearchBox" placeholder='City name' aria-describedby="searchHelp">
         <button type="submit" id="searchCity" class="btn btn-primary border-light w-25 ms-3">Submit</button>
       </div>
       <div class="info-wrapper justify-content-start">
-        <div id="searchHelp" class="form-text text-info">You must at least use 3 characters</div>
+        <div id="searchHelp" class="form-text text-info">At least 3 letters are needed</div>
       </div>
     </form>
   </div>
