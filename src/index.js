@@ -64,6 +64,7 @@ function getOneDayForecaste(forecast) {
 }
 
 const searchCity = document.getElementById('searchCity');
+const tooltipText = document.getElementById('searchHelp');
 let currentForecast = '';
 let fiveDaysForecast = '';
 
@@ -79,6 +80,15 @@ const createMap = (lat = -31.4135, lon = -64.1811) => {
     accessToken: getMapboxApiKeyKey,
   }).addTo(mymap);
 };
+
+const citySearchBoxElement = document.getElementById('citySearchBox');
+citySearchBoxElement.addEventListener('keyup', (e) => {
+  if (e.target.value.length < 2) {
+    tooltipText.classList.remove('d-none'); 
+  } else if (e.target.value.length === 3) {
+    tooltipText.classList.add('d-none');
+  }
+});
 
 searchCity.addEventListener('click', (e) => {
   e.preventDefault();
