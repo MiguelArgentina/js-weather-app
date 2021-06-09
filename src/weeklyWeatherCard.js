@@ -7,9 +7,9 @@ export default function weeklyWeatherCard(apiResponse) {
   for (let i = 0; i < 5; i += 1) {
     const weatherData = apiResponse.list[(i * 8) + 4];
     const day = days[new Date(weatherData.dt * 1000).getUTCDay()];
-    const tMin = toCelsius ? kelvinToCelsius(weatherData.main.temp_min)
+    const tMin = !toCelsius ? kelvinToCelsius(weatherData.main.temp_min)
       : kelvinToFarenheit(weatherData.main.temp_min);
-    const tMax = toCelsius ? kelvinToCelsius(weatherData.main.temp_max)
+    const tMax = !toCelsius ? kelvinToCelsius(weatherData.main.temp_max)
       : kelvinToFarenheit(weatherData.main.temp_max);
     const weeklyWeatherCard = '<div class="weakly-weather-item">'
   + '        <div class="upper-day-info d-block d-md-flex justify-content-between">'

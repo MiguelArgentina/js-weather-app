@@ -33,8 +33,17 @@
 
     <form class="d-block">
       <div class="mb-3 mt-5 d-flex justify-content-around align-items-center">
-        <input type="text" class="form-control w-50" id="citySearchBox" placeholder='City name'>
-          <input type="checkbox" id="tempSelector" checked data-toggle="toggle" data-on="<sup>&deg;</sup>C" data-off="<sup>&deg;</sup>F" data-onstyle="primary" data-offstyle="info">
+        <input type="text" autocomplete="off" class="form-control w-50" id="citySearchBox" placeholder='City name'>
+
+        <div id="toggleTempSelector">
+          <strong class="text-white"><sup>&deg;</sup>C</strong>
+          <label class="switch">
+            <input type="checkbox" id="tempSelector">
+            <span class="slider round"></span>
+          </label>
+          <strong class="text-light"><sup>&deg;</sup>F</strong>
+
+          </div>
         <button type="submit" id="searchCity" class="btn btn-primary border-light w-25 ms-3">Submit</button>
       </div>
       <div class="info-wrapper justify-content-start">

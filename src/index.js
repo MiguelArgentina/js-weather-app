@@ -21,6 +21,9 @@ function fetchHandler(response) {
   });
 }
 
+let oneDayWeatherCache = '';
+let fiveDaysWeatherCache = '';
+
 const getWeatherForecast = (citySearchBox) => {
   let url = 'https://api.openweathermap.org/data/2.5/weather?q=';
   url += citySearchBox;
@@ -47,8 +50,8 @@ function getOneDayForecast(forecast) {
   const city = forecast.name;
   const { humidity } = forecast.main;
   const tempSelector = document.getElementById('tempSelector').checked;
-  const temp = tempSelector ? tempC : tempF;
-  const feelsLike = tempSelector ? feelsC : feelsF;
+  const temp = tempSelector ? tempF : tempC;
+  const feelsLike = tempSelector ? feelsF : feelsC;
   return cityWeatherCard({
     temp, feelsLike, weatherIcon, weatherDesc, city, humidity,
   });
@@ -111,6 +114,7 @@ searchCity.addEventListener('click', (e) => {
           showAlert({ class: 'danger', message: `Problem encountered: ${res.message}` });
         } else {
           currentForecast = res.json;
+          oneDayWeatherCache = currentForecast;
           document.getElementById('city-weather-card').innerHTML = getOneDayForecast(currentForecast);
           createMap(currentForecast.coord.lat, currentForecast.coord.lon);
         }
@@ -119,6 +123,7 @@ searchCity.addEventListener('click', (e) => {
       .then((response) => fetchHandler(response))
       .then((res) => {
         fiveDaysForecast = res.json;
+        fiveDaysWeatherCache = fiveDaysForecast;
         document.getElementById('weekly-weather-card').innerHTML = getFiveDayForecast(fiveDaysForecast);
       });
   }
@@ -126,4 +131,10 @@ searchCity.addEventListener('click', (e) => {
 
 window.onload = () => {
   document.getElementById('searchCity').disabled = true;
+  document.getElementById('tempSelector').parentNode.addEventListener('click', () => {
+    if (oneDayWeatherCache) {
+      document.getElementById('city-weather-card').innerHTML = getOneDayForecast(oneDayWeatherCache);
+      document.getElementById('weekly-weather-card').innerHTML = getFiveDayForecast(fiveDaysWeatherCache);
+    }
+});
 };
