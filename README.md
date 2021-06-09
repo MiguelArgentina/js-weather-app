@@ -19,7 +19,7 @@
 
 ## Live Demo
 
-Visit [TucuWeather App](https://zealous-bell-630b4e.netlify.app/)
+Visit [TucuWeather App](https://heuristic-torvalds-b75586.netlify.app/)
 
 ## Prerequisites
 
