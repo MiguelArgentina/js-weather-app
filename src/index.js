@@ -2,24 +2,9 @@ import 'bootstrap';
 import './style.scss';
 import getOpenweatherApiKey from './openweatherApiKey';
 import getMapboxApiKeyKey from './mapboxApiKey';
-
-const openweatherApiKey = getOpenweatherApiKey;
-
-
-const createRow = (lists) => {
-  const list = document.getElementById('list');
-  list.textContent = null;
-  lists.forEach((l) => {
-    const li = document.createElement('li');
-    li.appendChild(document.createTextNode(`${l.cityName}, ${l.countryName}`));
-    const idNode = document.createElement('span');
-    idNode.innerText = l.id;
-    idNode.classList.add('d-none');
-    li.appendChild(idNode);
-    li.addEventListener('click', (e) => citySelected(e));
-    list.appendChild(li);
-  });
-};
+import cityWeatherCard from './cityWeatherCard';
+import weeklyWeatherCard from './weeklyWeatherCard';
+import { kelvinToFarenheit, kelvinToCelsius } from './helpers';
 
 function fetchHandler(response) {
   if (response.ok) {
@@ -52,15 +37,25 @@ const getFiveDaysWeatherForecast = (citySearchBox) => {
   return fetch(url);
 };
 
-function getOneDayForecaste(forecast) {
-  const tempC = Math.round(parseFloat(forecast.main.temp)-273.15);
-  const tempF = Math.round(((parseFloat(forecast.main.temp)-273.15)*1.8)+32); 
-  const feelsC = Math.round(parseFloat(forecast.main.feels_like)-273.15);
-  const feelsF = Math.round(((parseFloat(forecast.main.feels_like)-273.15)*1.8)+32); 
+function getOneDayForecast(forecast) {
+  const tempC = kelvinToCelsius(forecast.main.temp);
+  const tempF = kelvinToFarenheit(forecast.main.temp);
+  const feelsC = kelvinToCelsius(forecast.main.feels_like);
+  const feelsF = kelvinToFarenheit(forecast.main.feels_like);
+  const weatherIcon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+  const weatherDesc = forecast.weather[0].description;
+  const city = forecast.name;
+  const { humidity } = forecast.main;
+  const tempSelector = document.getElementById('tempSelector').checked;
+  const temp = tempSelector ? tempC : tempF;
+  const feelsLike = tempSelector ? feelsC : feelsF;
+  return cityWeatherCard({
+    temp, feelsLike, weatherIcon, weatherDesc, city, humidity,
+  });
+}
 
-  document.getElementById('description').innerText = forecast.weather[0].description;
-  document.getElementById('temp').innerText = `${tempC}&deg;`;
-  document.getElementById('location').innerText = forecast.name;
+function getFiveDayForecast(fiveDaysForecast) {
+  return weeklyWeatherCard(fiveDaysForecast);
 }
 
 const searchCity = document.getElementById('searchCity');
@@ -70,7 +65,9 @@ let fiveDaysForecast = '';
 
 const createMap = (lat = -31.4135, lon = -64.1811) => {
   document.getElementById('weathermap').innerHTML = "<div id='mapid'></div>";
+  // eslint-disable-next-line no-undef
   const mymap = L.map('mapid').setView([lat, lon], 11);
+  // eslint-disable-next-line no-undef
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -84,9 +81,11 @@ const createMap = (lat = -31.4135, lon = -64.1811) => {
 const citySearchBoxElement = document.getElementById('citySearchBox');
 citySearchBoxElement.addEventListener('keyup', (e) => {
   if (e.target.value.length < 2) {
-    tooltipText.classList.remove('d-none'); 
+    tooltipText.classList.remove('d-none');
+    document.getElementById('searchCity').disabled = true;
   } else if (e.target.value.length === 3) {
     tooltipText.classList.add('d-none');
+    document.getElementById('searchCity').disabled = false;
   }
 });
 
@@ -112,27 +111,19 @@ searchCity.addEventListener('click', (e) => {
           showAlert({ class: 'danger', message: `Problem encountered: ${res.message}` });
         } else {
           currentForecast = res.json;
-          console.log(currentForecast);
-          getOneDayForecaste(currentForecast);
-          createMap(currentForecast.coord.lat, currentForecast.coord.lon)
-          // createRow(result);
+          document.getElementById('city-weather-card').innerHTML = getOneDayForecast(currentForecast);
+          createMap(currentForecast.coord.lat, currentForecast.coord.lon);
         }
       });
     getFiveDaysWeatherForecast(citySearchBox)
       .then((response) => fetchHandler(response))
       .then((res) => {
-        if (res.cod) {
-          console.log('There was a problem: ', res.message)
-        } else {
-          fiveDaysForecast = res.json;
-          console.log(fiveDaysForecast);
-          // createRow(result);
-        }
+        fiveDaysForecast = res.json;
+        document.getElementById('weekly-weather-card').innerHTML = getFiveDayForecast(fiveDaysForecast);
       });
-  } else {
-    createRow(['Please enter more than 3 characters']);
   }
 });
 
 window.onload = () => {
+  document.getElementById('searchCity').disabled = true;
 };

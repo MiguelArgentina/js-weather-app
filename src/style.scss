@@ -9,6 +9,46 @@ body {
     height: 80%;  
   }
 
+  .card {
+    padding: 1rem;
+    margin: 1.5rem 4vw;
+    border-radius: 1rem;
+    background-color: rgba(238, 237, 237, 0.22);
+    border-color: rgba(238, 237, 237, 0.22);
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    text-align: center
+  }
+
+.weakly-weather {
+  border-radius: 1rem;
+  background: rgba(118, 199, 231, 0.808);
+  overflow-x: auto
+}
+
+.weakly-weather .weakly-weather-item {
+  border-radius: 1rem;
+  width:  20%;
+  border-right: 1px solid #f2f2f2;
+  padding: 1rem;
+  text-align: center;
+
+  hr {
+    border: 0.7px solid rgba(137, 199, 231, 0.808);
+  }
+  .upper-day-info > p {
+    font-size: 0.85rem;
+  }
+
+  .lower-day-info > img {
+    width: 50%;
+  }
+
+  .min-max-day-temp > p {
+    font-size: 0.80rem;
+  }
+}
+
+
   #mapid {
    height: 40vh;
    width: 80vw;
