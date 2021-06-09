@@ -24,21 +24,21 @@ function fetchHandler(response) {
 let oneDayWeatherCache = '';
 let fiveDaysWeatherCache = '';
 
-const getWeatherForecast = (citySearchBox) => {
+async function getWeatherForecast(citySearchBox) {
   let url = 'https://api.openweathermap.org/data/2.5/weather?q=';
   url += citySearchBox;
   url += '&appid=';
   url += getOpenweatherApiKey;
   return fetch(url);
-};
+}
 
-const getFiveDaysWeatherForecast = (citySearchBox) => {
+async function getFiveDaysWeatherForecast(citySearchBox) {
   let url = 'https://api.openweathermap.org/data/2.5/forecast?q=';
   url += citySearchBox;
   url += '&appid=';
   url += getOpenweatherApiKey;
   return fetch(url);
-};
+}
 
 function getOneDayForecast(forecast) {
   const tempC = kelvinToCelsius(forecast.main.temp);
@@ -136,5 +136,5 @@ window.onload = () => {
       document.getElementById('city-weather-card').innerHTML = getOneDayForecast(oneDayWeatherCache);
       document.getElementById('weekly-weather-card').innerHTML = getFiveDayForecast(fiveDaysWeatherCache);
     }
-});
+  });
 };
