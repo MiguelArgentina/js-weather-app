@@ -29,20 +29,16 @@ Visit [TucuWeather App](https://zealous-bell-630b4e.netlify.app/)
 
 - Open your terminal - Windows: `Win + R`, then type `cmd` | Mac: `Command + space`, then type `Terminal`
 - Navigate to a directory of your choosing using the `cd` command
-- Run this command in your OS terminal: `git clone https://github.com/MiguelArgentina/todo-list.git` to get a copy of the project.
+- Run this command in your OS terminal: `git clone git@github.com:MiguelArgentina/js-weather-app.git` to get a copy of the project.
 - Navigate to the project's directory using the `cd` command
 
 ### Usage
 
-From within the project directory open the `index.html`
+From within the project directory after installing the required dependencies with `npm i`, run `npm start` to open the dev server to use the project locally.
 
-## Authors
 
-👤 &nbsp; **Diego Hernández**
 
-- GitHub: [@Diegodsha](https://github.com/Diegodsha)
-- Twitter: [@diegohdezchimo](https://twitter.com/diegohdezchimo)
-- Portfolio: [Portfolio](https://dshagui.com/)
+## Author
 
 👤 &nbsp; **Miguel Ricardo Gomez**
 
@@ -53,14 +49,14 @@ From within the project directory open the `index.html`
 <br>
 <br>
 <p align="center">
-  <a href="https://github.com/MiguelArgentina/todo-list/issues">
-  <img src="https://img.shields.io/github/issues-raw/MiguelArgentina/todo-list?style=for-the-badge"
+  <a href="https://github.com/MiguelArgentina/js-weather-app/issues">
+  <img src="https://img.shields.io/github/issues-raw/MiguelArgentina/js-weather-app?style=for-the-badge"
        alt="Issues"></a>
-   <a href="https://github.com/MiguelArgentina/todo-list/pulls">
-  <img src="https://img.shields.io/github/issues-pr/MiguelArgentina/todo-list?style=for-the-badge"
+   <a href="https://github.com/MiguelArgentina/js-weather-app/pulls">
+  <img src="https://img.shields.io/github/issues-pr/MiguelArgentina/js-weather-app?style=for-the-badge"
        alt="Pull Requests"></a>
-   <a href="https://github.com/MiguelArgentina/todo-list/blob/main/LICENSE">
-  <img src="https://img.shields.io/github/license/MiguelArgentina/todo-list?style=for-the-badge"
+   <a href="https://github.com/MiguelArgentina/js-weather-app/blob/main/LICENSE">
+  <img src="https://img.shields.io/github/license/MiguelArgentina/js-weather-app?style=for-the-badge"
        alt="License"></a>
 </p>
 
@@ -70,4 +66,4 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-This project was based on [The Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/todo-list) lesson
+This project was based on [The Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/weather-app) lesson
