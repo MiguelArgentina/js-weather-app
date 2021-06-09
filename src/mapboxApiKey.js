@@ -1,0 +1,2 @@
+const getMapboxApiKeyKey = 'pk.eyJ1IjoibWlndWVsZ29tZXo2NiIsImEiOiJja3BuNGx6MWIwMnRpMm9wYWx0c29kdDJyIn0.lszyKdtcwAkaEA8KCEqUJA';
+export default getMapboxApiKeyKey;
