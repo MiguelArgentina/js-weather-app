@@ -1,2 +1,2 @@
-const getMapboxApiKeyKey = process.env.MB_API;
+const getMapboxApiKeyKey = 'MB_API';
 export default getMapboxApiKeyKey;
